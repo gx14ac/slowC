@@ -32,6 +32,7 @@ void print_help(const char *program)
     print_usage(program);
     printf(
     "Available options:\n"
+    " -H - help command"
     " -c - contentLength.\n"
     " -d - dialWorkerCount.\n"
     " -r - rampUpInterval.\n"
@@ -42,12 +43,12 @@ void print_help(const char *program)
     );
 }
 
-void parse(int argc, char const **argv, Arguments *args)
+void parse(int argc, char const *argv[], Arguments *args)
 {
     int opt;
-    while ((opt = getopt(argc, (char *const)*argv, "h:c:d:g:r:s:t:v:h")) != -1) {
+    while ((opt = getopt(argc, (char *const*)argv, "H:c:d:g:r:s:t:v:h")) != -1) {
         switch (opt) {
-        case 'h':
+        case 'H':
             args->help = true;
             break;
         case 'c':
@@ -61,17 +62,20 @@ void parse(int argc, char const **argv, Arguments *args)
             break;
         case 's':
             args->sleep_interval = atoi(optarg);
+            break;
         case 't':
             args->test_duration = atoi(optarg);
+            break;
         case 'v':
             args->victim_url = optarg;
+            break;
         case 'h':
             args->host_header = optarg;
             break;
         default:
             fprintf(stderr, "ERROR: Unknown arguments passed\n");
             print_usage(argv[0]);
-            break;
+            exit(2);
         }
     }
 }

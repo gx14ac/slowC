@@ -33,7 +33,7 @@ typedef struct
 * @brief print program usage
 * @param program name of the program (argv[0])
 */
-void print_usage(const char* program);
+void print_usage(const char *program);
 
 /**
 * @brief print detail usage with all command line arguments explained
@@ -53,6 +53,6 @@ void init_args(Arguments *args);
 * @param argv   program's argv (vector containing all arguments passed)
 * @param args   store here parsed arguments
 */
-void parse(int argc, char const **argv, Arguments *args);
+void parse(int argc, char const *argv[], Arguments *args);
 
 #endif // ARGS_PARSER
