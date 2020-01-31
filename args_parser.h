@@ -39,7 +39,7 @@ void print_usage(const char *program);
 * @brief print detail usage with all command line arguments explained
 * @param program name of the program (argv[0])
 */
-void print_help(const char* program);
+void print_help(const char *program);
 
 /**
 * @brief initialize Arguments structure
