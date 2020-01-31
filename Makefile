@@ -11,11 +11,14 @@ PROG = slowC
 
 all: ${PROG}
 
+main.o: main.c
+	${CC} ${FLAGS} main.c -c
+
 args_parser.o: args_parser.c
 	${CC} ${FLAGS} args_parser.c -c
 
-${PROG}: args_parser.o
-	${CC} ${FLAGS} args_parser.o -o ${PROG}
+${PROG}: main.o args_parser.o
+	${CC} ${FLAGS} main.o args_parser.o -o ${PROG}
 
 clean:
 	rm ${OBJ} ${PROG}
