@@ -33,13 +33,13 @@ typedef struct
 * @brief print program usage
 * @param program name of the program (argv[0])
 */
-void print_usage(const char* argv);
+void print_usage(const char* program);
 
 /**
 * @brief print detail usage with all command line arguments explained
 * @param program name of the program (argv[0])
 */
-void print_help(const char* argv);
+void print_help(const char* program);
 
 /**
 * @brief initialize Arguments structure
