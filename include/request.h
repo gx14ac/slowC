@@ -19,7 +19,7 @@ typedef struct {
     CURL   *curlhandle;
     long   code;
     char   *url;
-    curl   *text;
+    char   *text;
     size_t size;
     char   **req_hdrv;
     int    req_hdrc;
@@ -34,7 +34,7 @@ CURLcode get_request(REQ_T *req, char *url);
 CURLcode post_request(REQ_T *req, char *url, char *data);
 CURLcode put_request(REQ_T *req, char *url, char *data);
 
-CURLcode get_header_request(REQ_T *req, char *url, char *data,
+CURLcode get_header_request(REQ_T *req, char *url,
                             char **custom_hdrv, int custom_hdrc);
 CURLcode post_header_request(REQ_T *req, char *url, char *data,
                             char **custom_hdrv, int custom_hdrc);

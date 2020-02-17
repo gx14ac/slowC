@@ -168,8 +168,8 @@ CURLcode get_request(REQ_T *req, char *url) {
     return rc;
 }
 
-CURLcode get_header_request(REQ_T *req, char *url, char *data,
-                            char **custom_hdrv, int custom_hdrc)
+CURLcode get_header_request(REQ_T *req, char *url,
+                              char **custom_hdrv, int custom_hdrc)
 {
     CURLcode rc;
     struct curl_slist *slist = NULL;
