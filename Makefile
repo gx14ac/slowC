@@ -5,17 +5,17 @@
 #
 
 CC = gcc
-FLAGS = -Wall -Wextra -pedantic -Werror
+FLAGS = -Iinclude -Wall -Wextra -pedantic -Werror
 OBJ = *.o
 PROG = slowC
 
 all: ${PROG}
 
-main.o: main.c
-	${CC} ${FLAGS} main.c -c
+args_parser.o: src/args_parser.c
+	${CC} ${FLAGS} -c src/args_parser.c
 
-args_parser.o: args_parser.c
-	${CC} ${FLAGS} args_parser.c -c
+main.o: src/main.c
+	${CC} ${FLAGS} -c src/main.c
 
 ${PROG}: main.o args_parser.o
 	${CC} ${FLAGS} main.o args_parser.o -o ${PROG}
