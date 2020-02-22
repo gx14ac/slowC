@@ -25,8 +25,8 @@ typedef struct
     int ramp_up_interval;
     int sleep_interval;
     int test_duration;
-    const char *victim_url;
-    const char *host_header;
+    int target_port;
+    const char *target_host;
 } Arguments;
 
 /**
