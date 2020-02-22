@@ -17,7 +17,7 @@ args_parser.o: src/args_parser.c
 main.o: src/main.c
 	${CC} ${FLAGS} -c src/main.c
 
-${PROG}: main.o args_parser.o
+${PROG}: main.o args_parser.o 
 	${CC} ${FLAGS} main.o args_parser.o -o ${PROG}
 
 clean:
