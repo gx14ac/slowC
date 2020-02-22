@@ -14,14 +14,11 @@ all: ${PROG}
 args_parser.o: src/args_parser.c
 	${CC} ${FLAGS} -c src/args_parser.c
 
-request.o: src/request.c
-	${CC} ${FLAGS} -c src/request.c
-
 main.o: src/main.c
 	${CC} ${FLAGS} -c src/main.c
 
-${PROG}: main.o args_parser.o request.o
-	${CC} ${FLAGS} main.o args_parser.o request.o -o ${PROG}
+${PROG}: main.o args_parser.o 
+	${CC} ${FLAGS} main.o args_parser.o -o ${PROG}
 
 clean:
 	rm ${OBJ} ${PROG}
