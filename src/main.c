@@ -18,8 +18,6 @@
 
 #include "args_parser.h"
 
-#define UNUSED(expr) do { (void)(expr); } while (0)
-
 typedef int SOCKET;
 typedef struct sockaddr_in SOCKADDR_IN;
 typedef struct sockaddr SOCKADDR;
@@ -105,8 +103,6 @@ int slowloris(Arguments *args)
 
 int main(int argc, char const *argv[])
 { 
-    UNUSED(argc);
-    UNUSED(argv);
     Arguments args;
     init_args(&args);
     parse(argc, argv, &args);
